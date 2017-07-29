@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export default class Hit extends Component {
   constructor(props) {
-    super(props);
+    super();
   }
 
   render() {

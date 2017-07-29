@@ -4,7 +4,8 @@ import { activateStep } from '../actions/index';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
-import Hit from '../components/Hit';
+import Playhead from '../components/Playhead';
+import StepHits from '../components/StepHits';
 
 class Playground extends Component {
   renderSteps() {
@@ -15,52 +16,39 @@ class Playground extends Component {
       playing = this.props.activeStep.step;
     }
     return this.props.steps.map(step => {
-      let hits = step.hits;
       return (
         <StepContainer
           key={ `container-${step.step}` }
-          className={ `${playing === step.step ? 'playing' : ''}` }
+          className={ `step ${playing === step.step ? 'playing' : ''}` }
+          onClick={() => this.props.activateStep(step)}
           >
           <Playhead
             key={ `playhead-${step.step}` }
-            className="playhead"
+            isPlaying={playing}
           />
-          <Step
-            key={step.step}
+          <StepHits
+            key={ `stephits-${step.step}` }
             className={ `step step-${step.step}` }
-            onClick={() => this.props.activateStep(step)}
-          >
-            {this.renderHits(hits)}
-          </Step>
+            hits={step.hits}
+          />
         </StepContainer>
-      );
-    });
-  }
-
-  renderHits(hits) {
-    return hits.map(hit => {
-      return (
-        <Hit
-          key={hit.id}
-          id={hit.id}
-          sound={hit.sound}
-          activated={hit.activated}
-        />
       );
     });
   }
 
   render() {
     return (
-      <Steps>
+      <PlaygoundContainer
+        className="playground"
+      >
         {this.renderSteps()}
-      </Steps>
+      </PlaygoundContainer>
     );
   }
 }
 
 
-const Steps = styled.div`
+const PlaygoundContainer = styled.div`
 	display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -76,18 +64,6 @@ const StepContainer = styled.div`
   &.playing {
     opacity: 1.0;
   }
-`;
-
-const Playhead = styled.div`
-  margin: 10px;
-  height: 20px;
-  background-color: transparent;
-`;
-
-const Step = styled.div`
-  margin: 10px;
-  display: flex;
-  flex-flow: column nowrap;
 `;
 
 
