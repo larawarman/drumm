@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { activateStep } from '../actions/index';
 import { bindActionCreators } from 'redux';
+import { activateStep } from '../actions/index';
 import styled from 'styled-components';
 
 import Playhead from '../components/Playhead';

@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import StepReducer from './reducer_steps';
+import Steps from './reducer_steps';
 import ActiveStep from './reducer_activeStep';
+import Bpm from './reducer_bpm';
 
 const rootReducer = combineReducers({
-  steps: StepReducer,
-  activeStep: ActiveStep
+  steps: Steps,
+  activeStep: ActiveStep,
+  bpm: Bpm
 });
 
 export default rootReducer;
