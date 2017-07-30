@@ -1,34 +1,51 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { playStop } from '../actions/index';
+import { updateLoopPos } from '../actions/index';
+import Tone from 'tone';
 import styled from 'styled-components';
 
 class Controls extends Component {
   constructor(props) {
     super();
+
+    this.state = {isPlaying: false};
+
     this.handlePlay = this.handlePlay.bind(this);
     this.handleStop = this.handleStop.bind(this);
+    this.updateTime = this.updateTime.bind(this);
   }
   handlePlay() {
-    this.props.playStop(true);
+    Tone.Transport.start('+0.5');
+    const synth = new Tone.Synth().toMaster();
+    Tone.Transport.scheduleRepeat(this.updateTime, "4n");
+    Tone.Transport.scheduleRepeat(function(time){
+      synth.triggerAttackRelease("C4", "8n");
+    }, "4n");
+    this.setState({isPlaying: true});
   }
   handleStop() {
-    this.props.playStop(false);
+    Tone.Transport.stop();
+    Tone.Transport.cancel();
+    this.setState({isPlaying: false});
+  }
+  updateTime() {
+    this.props.updateLoopPos(Tone.Transport.progress);
+    console.log(this.props.loopPos);
   }
   render() {
+    Tone.Transport.bpm.value = this.props.bpm;
     return (
       <ControlsContainer>
-        {this.props.isPlaying}
         <Play
           onClick={this.handlePlay}
-          className={ `${this.props.isPlaying === false ? 'active' : ''}` }
+          className={ `${this.state.isPlaying === false ? 'active' : ''}` }
         >
           &#9658;
         </Play>
         <Stop
           onClick={this.handleStop}
-          className={ `${this.props.isPlaying === true ? 'active' : ''}` }
+          className={ `${this.state.isPlaying === true ? 'active' : ''}` }
         >
           &#9724;
         </Stop>
@@ -55,12 +72,13 @@ const Stop = styled.div`
 
 function mapStateToProps(state) {
   return{
-    isPlaying: state.isPlaying
+    loopPos: state.loopPos,
+    bpm: state.bpm
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ playStop }, dispatch);
+  return bindActionCreators({ updateLoopPos }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Controls);
