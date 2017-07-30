@@ -10,6 +10,8 @@ class Hit extends Component {
   constructor(props) {
     super();
     this.toggleHit = this.toggleHit.bind(this);
+    this.updateState = this.updateState.bind(this);
+    this.state = {isActive: null};
   }
 
   playSound(sound) {
@@ -41,6 +43,15 @@ class Hit extends Component {
       }
       return newPresets;
     });
+    this.updateState();
+  }
+
+  updateState() {
+    if (this.props.activated === true) {
+      this.setState({isActive: false});
+    } else if (this.props.activated === false) {
+      this.setState({isActive: true});
+    }
   }
 
   render() {
@@ -50,7 +61,7 @@ class Hit extends Component {
     return (
       <Hitarea
         key={this.props.name}
-        className={ `hit${this.props.activated === true ? ' active' : ''}` }
+        className={ `hit${this.props.activated === true || this.state.isActive === true ? ' active' : ''}` }
         onClick={this.toggleHit}
       >
       </Hitarea>
@@ -65,7 +76,7 @@ const Hitarea = styled.div`
   margin: 10px 0;
   border-radius: 4px;
   opacity: 0.5;
-  &.active {
+  &.active, .tempactive {
     background-color: white;
     opacity: 1.0;
   }
