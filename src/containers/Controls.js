@@ -31,7 +31,6 @@ class Controls extends Component {
   }
   updateTime() {
     this.props.updateLoopPos(Tone.Transport.progress);
-    console.log(this.props.loopPos);
   }
   render() {
     Tone.Transport.bpm.value = this.props.bpm;

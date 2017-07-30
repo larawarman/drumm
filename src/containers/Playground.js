@@ -10,17 +10,17 @@ import StepHits from '../components/StepHits';
 class Playground extends Component {
   renderSteps() {
     let playing;
-    if(!this.props.activeStep) {
-      playing = null
-    } else {
-      playing = this.props.activeStep.step;
+    if(!this.props.loopPos) {
+      playing = 0;
     }
     return this.props.steps.map(step => {
+      if ( (this.props.loopPos * 8) + 1 === step.step ) {
+        playing = step.step;
+      }
       return (
         <StepContainer
           key={ `container-${step.step}` }
           className={ `step ${playing === step.step ? 'playing' : ''}` }
-          onClick={() => this.props.activateStep(step)}
           >
           <Playhead
             key={ `playhead-${step.step}` }
@@ -71,7 +71,8 @@ function mapStateToProps(state) {
   // take the app state of steps and map it as props onto steps
   return{
     steps: state.steps,
-    activeStep: state.activeStep
+    activeStep: state.activeStep,
+    loopPos: state.loopPos
   };
 }
 
