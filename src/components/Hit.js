@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Tone from 'tone';
-import synth from './App';
 import styled from 'styled-components';
 
 

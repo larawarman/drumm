@@ -4,6 +4,7 @@ import Tone from 'tone';
 import Bpm from '../containers/Bpm';
 import Controls from '../containers/Controls';
 import Playground from '../containers/Playground';
+import Presets from '../components/Presets';
 
 export const synth = new Tone.Synth().toMaster();
 
@@ -23,6 +24,7 @@ export default class App extends Component {
         <Controls />
         <Bpm />
         <Playground />
+        <Presets />
       </div>
     );
   }

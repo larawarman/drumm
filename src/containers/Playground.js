@@ -10,7 +10,7 @@ import StepHits from '../components/StepHits';
 class Playground extends Component {
   renderSteps() {
     let playing;
-    return this.props.steps.map(step => {
+    return this.props.steps[this.props.activePreset].map(step => {
       if ( (this.props.loopPos * 8 ) === step.step ) {
         playing = 'nowPlaying';
       } else {
@@ -73,6 +73,7 @@ function mapStateToProps(state) {
     steps: state.steps,
     activeStep: state.activeStep,
     loopPos: state.loopPos,
+    activePreset: state.activePreset
   };
 }
 
