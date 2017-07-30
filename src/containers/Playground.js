@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { activateStep } from '../actions/index';
 import styled from 'styled-components';
 
 import Playhead from '../components/Playhead';
@@ -77,11 +76,4 @@ function mapStateToProps(state) {
   };
 }
 
-// anything returned from here will be available as props on steps
-function mapDispatchToProps(dispatch) {
-  // whenever activateStep is called, the result of it
-  // will be passed to reducers
-  return bindActionCreators( { activateStep: activateStep }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Playground);
+export default connect(mapStateToProps)(Playground);
