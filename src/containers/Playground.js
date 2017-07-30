@@ -10,19 +10,17 @@ import StepHits from '../components/StepHits';
 class Playground extends Component {
   renderSteps() {
     let playing;
-    if(!this.props.loopPos) {
-      playing = false;
-    }
     return this.props.steps.map(step => {
-      if ( this.props.loopPos && (this.props.loopPos * 8) === step.step ) {
-        playing = step.step;
+      if ( (this.props.loopPos * 8 ) === step.step ) {
+        playing = 'nowPlaying';
+        console.log(playing);
       } else {
         playing = false;
       }
       return (
         <StepContainer
           key={ `container-${step.step}` }
-          className={ `step ${playing === step.step ? 'playing' : ''}` }
+          className={ `step ${playing === 'nowPlaying' ? 'playing' : ''}` }
           >
           <Playhead
             key={ `playhead-${step.step}` }

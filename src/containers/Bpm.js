@@ -13,14 +13,27 @@ class Bpm extends Component {
   }
   onInputChange(event) {
     let bpm = event.target.value;
-    this.props.updateBpm(bpm);
+    if (bpm < 1000 && bpm > 0){
+      this.props.updateBpm(bpm);
+    } else if (bpm >= 1000) {
+      this.props.updateBpm(999);
+    } else if (bpm >= 0) {
+      this.props.updateBpm(1);
+    }
+
   }
   increaseBPM() {
-    this.props.updateBpm(this.props.bpm + 1);
+    if (this.props.bpm < 1000 ){
+      this.props.updateBpm(this.props.bpm + 1);
+    } else {
+      this.props.updateBpm(999);
+    }
   }
   decreaseBPM() {
-    if (this.props.bpm > 0) {
+    if (this.props.bpm > 1) {
       this.props.updateBpm(this.props.bpm - 1);
+    } else {
+      this.props.updateBpm(1);
     }
   }
   render() {
@@ -31,7 +44,6 @@ class Bpm extends Component {
           className='bpm-input'
           type='number'
           min='1'
-          max='2000'
           value={this.props.bpm}
           onChange={this.onInputChange}
         />

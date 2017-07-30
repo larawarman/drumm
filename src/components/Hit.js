@@ -23,7 +23,7 @@ export default class Hit extends Component {
   }
 
   render() {
-    if ( this.props.isPlaying && this.props.activated === true ) {
+    if ( this.props.isPlaying === 'nowPlaying' && this.props.activated === true ) {
       this.playSound(this.props.sound);
     }
     return (
