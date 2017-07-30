@@ -13,7 +13,6 @@ class Playground extends Component {
     return this.props.steps.map(step => {
       if ( (this.props.loopPos * 8 ) === step.step ) {
         playing = 'nowPlaying';
-        console.log(playing);
       } else {
         playing = false;
       }
