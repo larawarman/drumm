@@ -24,6 +24,9 @@ export default class App extends Component {
         <HeaderArea>
           <h1>drumm</h1>
           <h6>a tiny lil&rsquo; 8-step drum machine</h6>
+          <a href="https://github.com/larawarman">
+            by lw with &lt;3
+          </a>
         </HeaderArea>
         <Playarea>
           <Machine>

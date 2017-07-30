@@ -26,8 +26,15 @@ const PresetArea = styled.div`
   flex-basis:40px;
   min-width:120px;
   border-radius: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s;
   &.active {
     background-color: rgba(17,67,87,1);
+    cursor: default;
+  }
+  &:hover {
+    background-color: rgba(17,67,87,1);
+    transition: background-color 0.3s;
   }
 `;
 

@@ -76,9 +76,15 @@ const Hitarea = styled.div`
   margin: 10px 0;
   border-radius: 4px;
   opacity: 0.5;
-  &.active, .tempactive {
+  transition: opacity 0.3s;
+  cursor: pointer;
+  &.active, &.tempactive {
     background-color: white;
     opacity: 1.0;
+  }
+  &:hover {
+    opacity: 0.7;
+    transition: opacity 0.3s;
   }
 `;
 

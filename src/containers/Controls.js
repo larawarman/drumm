@@ -54,8 +54,14 @@ const ControlsContainer = styled.div`
   min-height: 56px;
   min-width: 64px;
   margin-right: 150px;
+  cursor: pointer;
+  transition: color 0.3s;
   .active {
     display: block;
+  }
+  &:hover {
+    color: rgba(255,255,255,1);
+    transition: color 0.3s;
   }
 `;
 

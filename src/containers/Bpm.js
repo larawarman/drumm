@@ -70,9 +70,15 @@ const Input = styled.input`
   color: rgba(255,255,255,0.8);
   max-width: 80px;
   text-align: center;
+  transition: all 0.3s;
   ::-webkit-inner-spin-button,
   ::-webkit-outer-spin-button {
     display:none;
+  }
+  &:hover {
+    color: rgba(255,255,255,1);
+    box-shadow: 0px 3px 0px 0px rgba(255,255,255,0.8);
+    transition: all 0.3s;
   }
 `;
 
@@ -82,6 +88,13 @@ const Arrows = styled.div`
   justify-content: flex-start;
   font-size: 2em;
   margin: 0 20px;
+  color: rgba(255,255,255,0.8);
+  transition: color 0.3s;
+  cursor: pointer;
+  &:hover {
+    color: rgba(255,255,255,1);
+    transition: color 0.3s;
+  }
 `;
 
 function mapStateToProps(state) {
