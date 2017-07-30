@@ -1,5 +1,4 @@
 export const UPDATE_BPM = 'update_bpm';
-export const PLAY_STOP = 'play_stop';
 export const UPDATE_LOOPPOS = 'update_looppos';
 export const UPDATE_ACTIVEPRESET = 'update_activepreset';
 
