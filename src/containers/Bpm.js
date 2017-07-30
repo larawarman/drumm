@@ -91,7 +91,7 @@ const Arrows = styled.div`
   color: rgba(255,255,255,0.8);
   transition: color 0.3s;
   cursor: pointer;
-  &:hover {
+  .fa:hover {
     color: rgba(255,255,255,1);
     transition: color 0.3s;
   }
