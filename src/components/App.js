@@ -5,6 +5,8 @@ import Bpm from '../containers/Bpm';
 import Controls from '../containers/Controls';
 import Playground from '../containers/Playground';
 
+export const synth = new Tone.Synth().toMaster();
+
 export default class App extends Component {
   constructor(props) {
     super();

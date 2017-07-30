@@ -17,11 +17,7 @@ class Controls extends Component {
   }
   handlePlay() {
     Tone.Transport.start('+0.5');
-    const synth = new Tone.Synth().toMaster();
     Tone.Transport.scheduleRepeat(this.updateTime, "4n");
-    Tone.Transport.scheduleRepeat(function(time){
-      synth.triggerAttackRelease("C4", "8n");
-    }, "4n");
     this.setState({isPlaying: true});
   }
   handleStop() {

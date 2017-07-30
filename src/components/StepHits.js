@@ -17,6 +17,7 @@ export default class StepHits extends Component {
           id={hit.id}
           sound={hit.sound}
           activated={hit.activated}
+          isPlaying={this.props.isPlaying}
         />
       );
     });

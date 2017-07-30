@@ -11,11 +11,13 @@ class Playground extends Component {
   renderSteps() {
     let playing;
     if(!this.props.loopPos) {
-      playing = 0;
+      playing = false;
     }
     return this.props.steps.map(step => {
-      if ( (this.props.loopPos * 8) + 1 === step.step ) {
+      if ( this.props.loopPos && (this.props.loopPos * 8) === step.step ) {
         playing = step.step;
+      } else {
+        playing = false;
       }
       return (
         <StepContainer
@@ -30,6 +32,7 @@ class Playground extends Component {
             key={ `stephits-${step.step}` }
             className={ `step step-${step.step}` }
             hits={step.hits}
+            isPlaying={playing}
           />
         </StepContainer>
       );
@@ -72,7 +75,7 @@ function mapStateToProps(state) {
   return{
     steps: state.steps,
     activeStep: state.activeStep,
-    loopPos: state.loopPos
+    loopPos: state.loopPos,
   };
 }
 
