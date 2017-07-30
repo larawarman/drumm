@@ -1,6 +1,7 @@
 export const UPDATE_BPM = 'update_bpm';
 export const UPDATE_LOOPPOS = 'update_looppos';
 export const UPDATE_ACTIVEPRESET = 'update_activepreset';
+export const UPDATE_STEPS = 'update_steps';
 
 export function updateBpm(bpm) {
   return {
@@ -20,5 +21,12 @@ export function updateActivePreset(activePreset) {
   return {
     type: UPDATE_ACTIVEPRESET,
     payload: activePreset
+  }
+}
+
+export function updateSteps(steps) {
+  return {
+    type: UPDATE_STEPS,
+    payload: steps
   }
 }

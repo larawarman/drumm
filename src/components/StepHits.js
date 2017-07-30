@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import Hit from './Hit';
+import Hit from '../containers/Hit';
 
 
 export default class StepHits extends Component {
@@ -13,8 +13,8 @@ export default class StepHits extends Component {
     return this.props.hits.map(hit => {
       return (
         <Hit
-          key={hit.id}
-          id={hit.id}
+          key={hit.name}
+          name={hit.name}
           sound={hit.sound}
           activated={hit.activated}
           isPlaying={this.props.isPlaying}
