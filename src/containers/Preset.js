@@ -15,20 +15,19 @@ class Preset extends Component {
         key={this.props.id}
         className={ `preset${this.props.id === this.props.activePreset ? ' active' : ''}` }
         onClick={() => this.props.updateActivePreset(this.props.id)}
-      >
-        {this.props.id + 1}
-      </PresetArea>
+      />
     )
   }
 }
 
 const PresetArea = styled.div`
-  width: 60px;
-  height: 60px;
-  background-color: aqua;
-  margin: 20px;
+  background-color: rgba(17,67,87,0.5);
+  margin: 5px 0;
+  flex-basis:40px;
+  min-width:120px;
+  border-radius: 1px;
   &.active {
-    background-color: yellow;
+    background-color: rgba(17,67,87,1);
   }
 `;
 

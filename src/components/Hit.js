@@ -30,15 +30,20 @@ export default class Hit extends Component {
         key={this.props.id}
         className={ `hit${this.props.activated === true ? ' active' : ''}` }
       >
-        {this.props.sound}
       </Hitarea>
     )
   }
 }
 
 const Hitarea = styled.div`
-  margin: 10px;
+  flex-basis: 60px;
+  background-color: black;
+  min-width: 60px;
+  margin: 10px 0;
+  border-radius: 4px;
+  opacity: 0.5;
   &.active {
-    color: blue;
+    background-color: white;
+    opacity: 1.0;
   }
 `;

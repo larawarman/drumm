@@ -19,20 +19,21 @@ class Presets extends Component {
   }
   render() {
     return (
-      <div>
-        Presets:
-        <PresetContainer
-          className="presets"
-        >
-          {this.renderPresets()}
-        </PresetContainer>
-      </div>
+      <PresetContainer
+        className='presets'
+      >
+        presets:
+        {this.renderPresets()}
+      </PresetContainer>
     )
   }
 }
 
 const PresetContainer = styled.div`
   display: flex;
+  flex-flow: column nowrap;
+  align-self: flex-end;
+  margin-bottom: 10px;
 `;
 
 
@@ -41,9 +42,5 @@ function mapStateToProps(state) {
     steps: state.steps
   };
 }
-
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({ updateBpm }, dispatch);
-// }
 
 export default connect(mapStateToProps)(Presets);

@@ -36,13 +36,13 @@ class Controls extends Component {
           onClick={this.handlePlay}
           className={ `${this.state.isPlaying === false ? 'active' : ''}` }
         >
-          &#9658;
+          <i className="fa fa-play" aria-hidden="true"></i>
         </Play>
         <Stop
           onClick={this.handleStop}
           className={ `${this.state.isPlaying === true ? 'active' : ''}` }
         >
-          &#9724;
+          <i className="fa fa-stop" aria-hidden="true"></i>
         </Stop>
       </ControlsContainer>
     )
@@ -50,6 +50,10 @@ class Controls extends Component {
 }
 
 const ControlsContainer = styled.div`
+  font-size: 4em;
+  min-height: 56px;
+  min-width: 64px;
+  margin-right: 150px;
   .active {
     display: block;
   }

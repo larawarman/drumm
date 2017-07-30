@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import Playhead from '../components/Playhead';
 import StepHits from '../components/StepHits';
 
 class Playground extends Component {
@@ -19,10 +18,6 @@ class Playground extends Component {
           key={ `container-${step.step}` }
           className={ `step ${playing === 'nowPlaying' ? 'playing' : ''}` }
           >
-          <Playhead
-            key={ `playhead-${step.step}` }
-            isPlaying={playing}
-          />
           <StepHits
             key={ `stephits-${step.step}` }
             className={ `step step-${step.step}` }
@@ -39,6 +34,12 @@ class Playground extends Component {
       <PlaygoundContainer
         className="playground"
       >
+        <StepContainer className="labels">
+          <i className="fa fa-heart" aria-hidden="true"></i>
+          <i className="fa fa-flash" aria-hidden="true"></i>
+          <i className="fa fa-paper-plane" aria-hidden="true"></i>
+          <i className="fa fa-rocket" aria-hidden="true"></i>
+        </StepContainer>
         {this.renderSteps()}
       </PlaygoundContainer>
     );
@@ -50,6 +51,7 @@ const PlaygoundContainer = styled.div`
 	display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  margin-top: 60px;
 `;
 
 const StepContainer = styled.div`
@@ -61,6 +63,14 @@ const StepContainer = styled.div`
   }
   &.playing {
     opacity: 1.0;
+  }
+  &.labels {
+    font-size: 2em;
+    text-align: center;
+    justify-content: space-around;
+    color: rgba(255,255,255,0.9);
+    margin-right: 20px;
+    min-width: 30px;
   }
 `;
 

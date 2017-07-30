@@ -33,7 +33,7 @@ export default class StepHits extends Component {
 }
 
 const Hits = styled.div`
-  margin: 10px;
+  margin: 0 10px 5px;
   display: flex;
   flex-flow: column nowrap;
 `;

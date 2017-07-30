@@ -48,20 +48,28 @@ class Bpm extends Component {
           onChange={this.onInputChange}
         />
         <Arrows>
-          <div className='bpm-up' onClick={this.increaseBPM}>&#9662;</div>
-          <div className='bpm-down' onClick={this.decreaseBPM}>&#9662;</div>
+          <i className="fa fa-caret-up" aria-hidden="true" onClick={this.increaseBPM}></i>
+          <i className="fa fa-caret-down" aria-hidden="true" onClick={this.decreaseBPM}></i>
         </Arrows>
-        <label>bpm</label>
       </BpmContainer>
     )
   }
 }
 
 const BpmContainer = styled.div`
-  max-width: 200px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 `;
 
 const Input = styled.input`
+  font-size: 3em;
+  background-color: transparent;
+  border: none;
+  box-shadow: 0px 3px 0px 0px rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.8);
+  max-width: 80px;
+  text-align: center;
   ::-webkit-inner-spin-button,
   ::-webkit-outer-spin-button {
     display:none;
@@ -69,10 +77,11 @@ const Input = styled.input`
 `;
 
 const Arrows = styled.div`
-  display: inline-block;
-  .bpm-up {
-    transform: rotate(180deg);
-  }
+  display: inline-flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  font-size: 2em;
+  margin: 0 20px;
 `;
 
 function mapStateToProps(state) {
