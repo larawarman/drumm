@@ -36,6 +36,17 @@ const PresetArea = styled.div`
     background-color: rgba(17,67,87,1);
     transition: background-color 0.3s;
   }
+  @media (max-width: 960px) {
+    margin: 0 5px;
+    min-width: 40px;
+    flex-basis: 120px;
+    height: 120px;
+  }
+  @media (max-width: 720px) {
+    min-width: 30px;
+    flex-basis: 60px;
+    height: 60px;
+  }
 `;
 
 function mapStateToProps(state) {

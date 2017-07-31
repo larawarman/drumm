@@ -36,4 +36,7 @@ const Hits = styled.div`
   margin: 0 10px 5px;
   display: flex;
   flex-flow: column nowrap;
+  @media (max-width: 720px) {
+    margin: 0 3px 3px;
+  }
 `;

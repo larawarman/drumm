@@ -22,8 +22,12 @@ class Presets extends Component {
       <PresetContainer
         className='presets'
       >
-        presets:
-        {this.renderPresets()}
+        <div className="presetLabel">
+          presets:
+        </div>
+        <div className = 'thePresets'>
+          {this.renderPresets()}
+        </div>
       </PresetContainer>
     )
   }
@@ -34,6 +38,23 @@ const PresetContainer = styled.div`
   flex-flow: column nowrap;
   align-self: flex-end;
   margin-bottom: 10px;
+  .presetLabel {
+    margin: 0;
+  }
+  .thePresets {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  @media (max-width: 960px) {
+    align-self: center;
+    margin-top: 20px;
+    .presetLabel {
+      margin: 0 0 10px 5px;
+    }
+    .thePresets {
+      flex-flow: row nowrap;
+    }
+  }
 `;
 
 

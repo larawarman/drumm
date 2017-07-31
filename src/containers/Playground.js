@@ -71,6 +71,11 @@ const StepContainer = styled.div`
     color: rgba(255,255,255,0.9);
     margin-right: 20px;
     min-width: 30px;
+    @media (max-width: 720px) {
+      font-size: 1em;
+      margin-right: 10px;
+      min-width: 15px;
+    }
   }
 `;
 

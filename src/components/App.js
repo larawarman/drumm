@@ -7,8 +7,6 @@ import Controls from '../containers/Controls';
 import Playground from '../containers/Playground';
 import Presets from '../components/Presets';
 
-export const synth = new Tone.Synth().toMaster();
-
 export default class App extends Component {
   constructor(props) {
     super();
@@ -57,12 +55,19 @@ const AppContainer = styled.div`
   background: #776872;
   background: -webkit-linear-gradient(to left, #F29492, #114357);
   background: linear-gradient(to left, #F29492, #114357);
+  @media (max-width: 720px) {
+    border: none;
+    padding: 5px;
+  }
 `;
 
 const Playarea = styled.div`
   display: flex;
   justify-content: space-between;
   align-content: flex-end;
+  @media (max-width: 960px) {
+		flex-flow: column nowrap;
+	}
 `;
 
 const Inputs = styled.div`
@@ -77,4 +82,7 @@ const HeaderArea = styled.div`
 const Machine = styled.div`
   flex-grow: 1;
   margin-right: 120px;
+  @media (max-width: 960px) {
+    margin-right: 0;
+  }
 `;

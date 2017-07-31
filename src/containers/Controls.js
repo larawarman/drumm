@@ -63,6 +63,9 @@ const ControlsContainer = styled.div`
     color: rgba(255,255,255,1);
     transition: color 0.3s;
   }
+  @media (max-width: 720px) {
+    margin-right: 60px;
+  }
 `;
 
 const Play = styled.div`
