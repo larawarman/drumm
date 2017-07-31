@@ -22,7 +22,7 @@ class Playground extends Component {
             key={ `stephits-${step.step}` }
             className={ `step step-${step.step}` }
             hits={step.hits}
-            isPlaying={playing}
+            nowPlaying={playing}
           />
         </StepContainer>
       );

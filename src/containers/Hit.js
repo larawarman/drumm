@@ -10,8 +10,8 @@ class Hit extends Component {
   constructor(props) {
     super();
     this.toggleHit = this.toggleHit.bind(this);
-    this.updateState = this.updateState.bind(this);
-    this.state = {isActive: null};
+
+    this.state = {isActive: props.activated};
   }
 
   playSound(sound) {
@@ -43,25 +43,21 @@ class Hit extends Component {
       }
       return newPresets;
     });
-    this.updateState();
-  }
-
-  updateState() {
-    if (this.props.activated === true || this.state.isActive === true) {
+    if ( this.state.isActive === 'active' ){
       this.setState({isActive: 'inactive'});
-    } else if (this.props.activated === false || this.state.isActive === false) {
+    } else {
       this.setState({isActive: 'active'});
     }
   }
 
   render() {
-    if ( this.props.isPlaying === 'nowPlaying' && this.props.activated === true ) {
+    if ( this.props.isPlaying === true && this.props.nowPlaying === 'nowPlaying' && this.props.activated === 'active' ) {
       this.playSound(this.props.sound);
     }
     return (
       <Hitarea
         key={this.props.name}
-        className={ `hit${(this.props.activated === true ? ' presetActive' : '')} ${this.state.isActive}` }
+        className={ `hit ${this.state.isActive}` }
         onClick={this.toggleHit}
       >
       </Hitarea>
@@ -78,13 +74,13 @@ const Hitarea = styled.div`
   opacity: 0.5;
   transition: opacity 0.3s;
   cursor: pointer;
-  &.presetActive, &.active {
+  &.active {
     background-color: white;
     opacity: 1.0;
   }
   &.inactive {
     background-color: black;
-    opacity: 0.5;    
+    opacity: 0.5;
   }
   &:hover {
     opacity: 0.7;
@@ -99,7 +95,8 @@ const Hitarea = styled.div`
 function mapStateToProps(state) {
   return{
     steps: state.steps,
-    activePreset: state.activePreset
+    activePreset: state.activePreset,
+    isPlaying: state.isPlaying
   };
 }
 
