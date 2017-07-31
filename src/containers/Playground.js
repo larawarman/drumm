@@ -8,7 +8,7 @@ class Playground extends Component {
   renderSteps() {
     let playing;
     return this.props.steps[this.props.activePreset].map(step => {
-      if ( (this.props.loopPos * 8 ) === step.step ) {
+      if ( (this.props.loopPos) === (step.step - 1 ) / 8 ) {
         playing = 'nowPlaying';
       } else {
         playing = false;
