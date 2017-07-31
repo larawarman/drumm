@@ -43,12 +43,7 @@ export default class App extends Component {
 
 const AppContainer = styled.div`
   width: 100%;
-  height: 100%;
-  position: absolute;
-  left:0;
-  right:0;
-  top:0;
-  bottom:0;
+  min-height: 100%;
   padding: 20px;
   border: 10px #776872 solid;
   box-sizing: border-box;
