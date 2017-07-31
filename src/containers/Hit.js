@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updateSteps } from '../actions/index';
-import Tone from 'tone';
 import * as sounds from '../actions/sounds';
 import styled from 'styled-components';
 
@@ -48,10 +47,10 @@ class Hit extends Component {
   }
 
   updateState() {
-    if (this.props.activated === true) {
-      this.setState({isActive: false});
-    } else if (this.props.activated === false) {
-      this.setState({isActive: true});
+    if (this.props.activated === true || this.state.isActive === true) {
+      this.setState({isActive: 'inactive'});
+    } else if (this.props.activated === false || this.state.isActive === false) {
+      this.setState({isActive: 'active'});
     }
   }
 
@@ -62,7 +61,7 @@ class Hit extends Component {
     return (
       <Hitarea
         key={this.props.name}
-        className={ `hit${this.props.activated === true || this.state.isActive === true ? ' active' : ''}` }
+        className={ `hit${(this.props.activated === true ? ' presetActive' : '')} ${this.state.isActive}` }
         onClick={this.toggleHit}
       >
       </Hitarea>
@@ -72,20 +71,28 @@ class Hit extends Component {
 
 const Hitarea = styled.div`
   flex-basis: 60px;
-  background-color: black;
   min-width: 60px;
+  background-color: black;
   margin: 10px 0;
   border-radius: 4px;
   opacity: 0.5;
   transition: opacity 0.3s;
   cursor: pointer;
-  &.active, &.tempactive {
+  &.presetActive, &.active {
     background-color: white;
     opacity: 1.0;
+  }
+  &.inactive {
+    background-color: black;
+    opacity: 0.5;    
   }
   &:hover {
     opacity: 0.7;
     transition: opacity 0.3s;
+  }
+  @media (max-width: 720px) {
+    flex-basis: 30px;
+    min-width: 30px;
   }
 `;
 
