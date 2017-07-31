@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Tone from 'tone';
 import styled from 'styled-components';
 
-import Bpm from '../containers/Bpm';
-import Controls from '../containers/Controls';
-import Playground from '../containers/Playground';
+import Bpm from './Bpm';
+import Controls from './Controls';
+import Playground from './Playground';
 import Presets from '../components/Presets';
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super();
   }
@@ -18,7 +19,10 @@ export default class App extends Component {
   }
   render() {
     return (
-      <AppContainer className="app">
+      <AppContainer
+        className="app"
+        bpm = {this.props.bpm}
+      >
         <HeaderArea>
           <h1>drumm</h1>
           <h6>a tiny lil&rsquo; 8-step drum machine</h6>
@@ -49,10 +53,31 @@ const AppContainer = styled.div`
   box-sizing: border-box;
   background: #776872;
   background: -webkit-linear-gradient(to left, #F29492, #114357);
-  background: linear-gradient(to left, #F29492, #114357);
+  background: linear-gradient(220deg, #F29492, #114357);
+  background-size: 140% 140%;
+  -webkit-animation: bg-animate ${props => props.bpm ? (500 / props.bpm) : 6}s ease infinite;
+  -moz-animation: bg-animate ${props => props.bpm ? (500 / props.bpm) : 6}s ease infinite;
+  animation: bg-animate ${props => props.bpm ? (500 / props.bpm) : 6}s ease infinite;
+
+
   @media (max-width: 720px) {
     border: none;
     padding: 5px;
+  }
+  @-webkit-keyframes bg-animate {
+    0%{background-position:82% 0%}
+    50%{background-position:19% 100%}
+    100%{background-position:82% 0%}
+  }
+  @-moz-keyframes bg-animate {
+      0%{background-position:82% 0%}
+      50%{background-position:19% 100%}
+      100%{background-position:82% 0%}
+  }
+  @keyframes bg-animate {
+      0%{background-position:82% 0%}
+      50%{background-position:19% 100%}
+      100%{background-position:82% 0%}
   }
 `;
 
@@ -81,3 +106,11 @@ const Machine = styled.div`
     margin-right: 0;
   }
 `;
+
+function mapStateToProps(state) {
+  return{
+    bpm: state.bpm
+  };
+}
+
+export default connect(mapStateToProps)(App);
