@@ -29,7 +29,7 @@ class Controls extends Component {
     this.props.updateLoopPos(Tone.Transport.progress);
   }
   render() {
-    Tone.Transport.bpm.value = this.props.bpm;
+    Tone.Transport.bpm.value = this.props.bpm * 2;
     return (
       <ControlsContainer>
         <Play

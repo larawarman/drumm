@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updateSteps } from '../actions/index';
 import Tone from 'tone';
+import * as sounds from '../actions/sounds';
 import styled from 'styled-components';
 
 
@@ -15,15 +16,15 @@ class Hit extends Component {
   }
 
   playSound(sound) {
-    const synth = new Tone.MembraneSynth().toMaster();
     if ( sound === 'kick' ){
-      synth.triggerAttackRelease('C1', '8n')
+      sounds.MEMBRANE.triggerAttackRelease('C1', '8n')
     } else if ( sound === 'snare' ) {
-      synth.triggerAttackRelease('C2', '8n')
+      sounds.MEMBRANE.triggerAttackRelease('E2', '8n')
+      sounds.NOISE.triggerAttackRelease('8n')
     } else if ( sound === 'openHat' ) {
-      synth.triggerAttackRelease('E2', '8n')
+      sounds.METAL.triggerAttackRelease('8n')
     } else if ( sound === 'closedHat' ) {
-      synth.triggerAttackRelease('F2', '8n')
+      sounds.METAL.triggerAttackRelease('32n')
     }
   }
 
