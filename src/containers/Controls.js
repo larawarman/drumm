@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateLoopPos } from '../actions/index';
+import { updateLoopPos, updateIsPlaying } from '../actions/index';
 import Tone from 'tone';
 import styled from 'styled-components';
 
 class Controls extends Component {
   constructor(props) {
     super();
-
-    this.state = {isPlaying: false};
 
     this.handlePlay = this.handlePlay.bind(this);
     this.handleStop = this.handleStop.bind(this);
@@ -18,12 +16,12 @@ class Controls extends Component {
   handlePlay() {
     Tone.Transport.start('+0.5');
     Tone.Transport.scheduleRepeat(this.updateTime, "4n");
-    this.setState({isPlaying: true});
+    this.props.updateIsPlaying(true);
   }
   handleStop() {
     Tone.Transport.stop();
     Tone.Transport.cancel();
-    this.setState({isPlaying: false});
+    this.props.updateIsPlaying(false);
   }
   updateTime() {
     this.props.updateLoopPos(Tone.Transport.progress);
@@ -34,13 +32,13 @@ class Controls extends Component {
       <ControlsContainer>
         <Play
           onClick={this.handlePlay}
-          className={ `${this.state.isPlaying === false ? 'active' : ''}` }
+          className={ `${this.props.isPlaying === false ? 'active' : ''}` }
         >
           <i className="fa fa-play" aria-hidden="true"></i>
         </Play>
         <Stop
           onClick={this.handleStop}
-          className={ `${this.state.isPlaying === true ? 'active' : ''}` }
+          className={ `${this.props.isPlaying === true ? 'active' : ''}` }
         >
           <i className="fa fa-stop" aria-hidden="true"></i>
         </Stop>
@@ -81,12 +79,13 @@ const Stop = styled.div`
 function mapStateToProps(state) {
   return{
     loopPos: state.loopPos,
-    bpm: state.bpm
+    bpm: state.bpm,
+    isPlaying: state.isPlaying,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ updateLoopPos }, dispatch);
+  return bindActionCreators({ updateLoopPos, updateIsPlaying }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Controls);

@@ -22,6 +22,7 @@ class App extends Component {
       <AppContainer
         className="app"
         bpm = {this.props.bpm}
+        isPlaying = {this.props.isPlaying}
       >
         <HeaderArea>
           <h1>drumm</h1>
@@ -55,9 +56,9 @@ const AppContainer = styled.div`
   background: -webkit-linear-gradient(to left, #F29492, #114357);
   background: linear-gradient(220deg, #F29492, #114357);
   background-size: 140% 140%;
-  -webkit-animation: bg-animate ${props => props.bpm ? (500 / props.bpm) : 6}s ease infinite;
-  -moz-animation: bg-animate ${props => props.bpm ? (500 / props.bpm) : 6}s ease infinite;
-  animation: bg-animate ${props => props.bpm ? (500 / props.bpm) : 6}s ease infinite;
+  -webkit-animation: bg-animate ${props => props.isPlaying && props.bpm ? (500 / props.bpm) : 0}s ease infinite;
+  -moz-animation: bg-animate ${props => props.isPlaying && props.bpm ? (500 / props.bpm) : 0}s ease infinite;
+  animation: bg-animate ${props => props.isPlaying && props.bpm ? (500 / props.bpm) : 0}s ease infinite;
 
 
   @media (max-width: 720px) {
@@ -109,7 +110,8 @@ const Machine = styled.div`
 
 function mapStateToProps(state) {
   return{
-    bpm: state.bpm
+    bpm: state.bpm,
+    isPlaying: state.isPlaying,
   };
 }
 
