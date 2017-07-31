@@ -55,31 +55,6 @@ const AppContainer = styled.div`
   background: #776872;
   background: -webkit-linear-gradient(to left, #F29492, #114357);
   background: linear-gradient(220deg, #F29492, #114357);
-  background-size: 140% 140%;
-  -webkit-animation: bg-animate ${props => props.isPlaying && props.bpm ? (500 / props.bpm) : 0}s ease infinite;
-  -moz-animation: bg-animate ${props => props.isPlaying && props.bpm ? (500 / props.bpm) : 0}s ease infinite;
-  animation: bg-animate ${props => props.isPlaying && props.bpm ? (500 / props.bpm) : 0}s ease infinite;
-
-
-  @media (max-width: 720px) {
-    border: none;
-    padding: 5px;
-  }
-  @-webkit-keyframes bg-animate {
-    0%{background-position:82% 0%}
-    50%{background-position:19% 100%}
-    100%{background-position:82% 0%}
-  }
-  @-moz-keyframes bg-animate {
-      0%{background-position:82% 0%}
-      50%{background-position:19% 100%}
-      100%{background-position:82% 0%}
-  }
-  @keyframes bg-animate {
-      0%{background-position:82% 0%}
-      50%{background-position:19% 100%}
-      100%{background-position:82% 0%}
-  }
 `;
 
 const Playarea = styled.div`
