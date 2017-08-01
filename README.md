@@ -24,7 +24,7 @@ _a tiny lil’ 8-step drum machine_
 - `yarn start`
 
 ### play with the technologies used
-- react
-- redux
-- rtyled-components
-- tone.js
+- [react](https://facebook.github.io/react/)
+- [redux](http://redux.js.org/)
+- [styled-components](https://www.styled-components.com/)
+- [tone.js](https://tonejs.github.io/)
